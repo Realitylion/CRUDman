@@ -1,0 +1,63 @@
+.head {
+    width: 50px;
+    height: 60px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 21px;
+    left: 133px;
+    z-index: 1;
+}
+
+.torso {
+    width: 0px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    top: 85px;
+    left: 160px;
+}
+
+.leftleg {
+    width: 0px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    top: 185px;
+    left: 160px;
+    transform: rotate(14deg);
+    transform-origin: top;
+}
+
+.rightleg {
+    width: 0px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    top: 185px;
+    left: 160px;
+    transform: rotate(-14deg);
+    transform-origin: top;
+}
+
+.leftarm {
+    width: 70px;
+    height: 0px;
+    display: block;
+    position: absolute;
+    top: 130px;
+    left: 92px;
+    transform: rotate(-35deg);
+    transform-origin: top;
+}
+
+.rightarm {
+    width: 70px;
+    height: 0px;
+    display: block;
+    position: absolute;
+    top: 130px;
+    left: 158px;
+    transform: rotate(35deg);
+    transform-origin: top;
+}
