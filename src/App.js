@@ -1,19 +1,18 @@
 import { useState } from 'react';
 import './App.css'
-
-import { initializeApp } from "firebase/app";
 import { getDatabase, child, ref, set, get, remove } from "firebase/database";
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBGVc8x4GzlgFE4GyAIMtj5a2rl03VeBKU",
-  authDomain: "react-crud-project-16049.firebaseapp.com",
+  apiKey: `${process.env.REACT_APP_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
   databaseURL: "https://react-crud-project-16049-default-rtdb.firebaseio.com",
   projectId: "react-crud-project-16049",
   storageBucket: "react-crud-project-16049.appspot.com",
-  messagingSenderId: "293638898958",
-  appId: "1:293638898958:web:073703be7e78e24182035f",
+  messagingSenderId: `${process.env.REACT_APP_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_REACT_APP_API_ID}`,
   measurementId: "G-PNKMTY40ML"
 };
-
 // eslint-disable-next-line no-unused-vars
 const app = initializeApp(firebaseConfig);
 
