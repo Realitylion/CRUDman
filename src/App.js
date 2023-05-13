@@ -6,14 +6,15 @@ import { useState } from 'react';
 
 function App() {
   const [isHome, setisHome] = useState(true);
-  const [colour, setColour] = useState("black");
+  const [colour, setColour] = useState("");
+  const [editChar, setEditChar] = useState("");
 
   if(isHome) {
     return (
     <>
       <NavBar />  
       <button id="create_char_button" onClick={() => {setisHome(false)}}>Create a New Character</button>
-      {/* <ListCharacters /> */}
+      <ListCharacters />
     </>
     )
   } else {

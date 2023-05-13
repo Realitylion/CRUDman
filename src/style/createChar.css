@@ -1,63 +1,26 @@
-.head {
-    width: 50px;
-    height: 60px;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    top: 21px;
-    left: 133px;
-    z-index: 1;
+.stick-wrapper {
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
 }
 
-.torso {
-    width: 0px;
-    height: 100px;
-    display: block;
-    position: absolute;
-    top: 85px;
-    left: 160px;
+form {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
 }
 
-.leftleg {
-    width: 0px;
-    height: 100px;
-    display: block;
-    position: absolute;
-    top: 185px;
-    left: 160px;
-    transform: rotate(14deg);
-    transform-origin: top;
+#name_text_box {
+    width: 200px;
 }
 
-.rightleg {
-    width: 0px;
-    height: 100px;
-    display: block;
-    position: absolute;
-    top: 185px;
-    left: 160px;
-    transform: rotate(-14deg);
-    transform-origin: top;
+#submit_button {
+    width: 100px;
+    background-color: green;
 }
 
-.leftarm {
-    width: 70px;
-    height: 0px;
-    display: block;
-    position: absolute;
-    top: 130px;
-    left: 92px;
-    transform: rotate(-35deg);
-    transform-origin: top;
+#submit_button:hover {
+    background-color: rgb(0, 196, 0);
 }
 
-.rightarm {
-    width: 70px;
-    height: 0px;
-    display: block;
-    position: absolute;
-    top: 130px;
-    left: 158px;
-    transform: rotate(35deg);
-    transform-origin: top;
-}
