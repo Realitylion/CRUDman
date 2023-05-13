@@ -2,12 +2,11 @@ import './App.css';
 import NavBar from './components/navBar';
 import ListCharacters from './components/listCharacters';
 import Stickman from './components/creationChar';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { Context } from "./context";
 
 function App() {
-  const [isHome, setisHome] = useState(true);
-  const [colour, setColour] = useState("");
-  const [editChar, setEditChar] = useState("");
+  const { editChar, setEditChar, isHome, setisHome }= useContext(Context);
 
   if(isHome) {
     return (
@@ -22,9 +21,9 @@ function App() {
       <>
         <div id="creation_page">
           <NavBar /> 
-          <h1>Welcome to Character Creation Page!</h1>
-          <Stickman colour={colour} />
-          <button id="back_to_home" onClick={() => setisHome(true)}>Back to Characters</button>
+          {/* <h1>Welcome to Character Creation Page!</h1> */}
+          <Stickman />
+          <button id="back_to_home" onClick={() => {setisHome(true); setEditChar("")}}>Back to Characters</button>
         </div>
       </>
     )

@@ -1,14 +1,39 @@
-import { useEffect, useState } from 'react';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { useEffect, useState, useContext, useRef } from 'react';
+import { collection, addDoc, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/init-firestore';
 import '../style/createChar.css'
+import { Context } from "../context";
 
-export default function Stickman({colour}) {
+export default function Stickman() {
     const [curColour, setCurColour] = useState("#000000");
+    const { editChar, setEditChar, isHome, setisHome } = useContext(Context);
+    var id = useRef("");
+
     useEffect(() => {
-        updateColour()
+        if (editChar !== "") {
+            id.current = editChar;
+            const submit_button = document.getElementById("submit_button");
+            submit_button.innerHTML = "Update Character!";
+            const charactersCollectionRef = collection(db, "Characters");
+            getDocs(charactersCollectionRef).then(response => {
+                const chars = response.docs.map(doc => ({data: doc.data(), id: doc.id}));
+                var i = 0;
+                for (i; i < chars.length; i++) {
+                    if (chars[i].id === editChar) {
+                        setCharName(chars[i].data.Name);
+                        setCurColour(chars[i].data.Colour);
+                        break;
+                    }
+                }
+            })
+            setEditChar("");
+        }
     })
-    
+
+    useEffect(() => {    
+        updateColour();
+    })
+
     const updateColour = () => {
         const parts = document.getElementsByClassName("part");
         for (var i = 0; i < 6; i++) {
@@ -18,33 +43,58 @@ export default function Stickman({colour}) {
 
     const [charName, setCharName] = useState("");
     const submit_form = () => {
-        if(charName === "") {
-            alert("Enter a name for your character!");
-        } else {
-            const charactersCollectionRef = collection(db, "Characters");
-            getDocs(charactersCollectionRef).then(response => {
-                const chars_list = response.docs.map(doc => ({name: doc.data().Name}));
-                console.log(chars_list);
-                var flag = false;
-                for (var i = 0; i<chars_list.length; i++) {
-                    if (chars_list[i].name === charName) {
-                        alert("Character name taken, try a different one!");
-                        flag = true;
-                        break;
+        const submit_button = document.getElementById("submit_button");
+        if(submit_button.innerHTML === "Create this Character!") {
+            if(charName === "") {
+                alert("Enter a name for your character!");
+            } else {
+                const charactersCollectionRef = collection(db, "Characters");
+                getDocs(charactersCollectionRef).then(response => {
+                    const chars_list = response.docs.map(doc => ({name: doc.data().Name}));
+                    var flag = false;
+                    for (var i = 0; i<chars_list.length; i++) {
+                        if (chars_list[i].name === charName) {
+                            alert("Character name taken, try a different one!");
+                            flag = true;
+                            break;
+                        }
                     }
-                }
-                if (flag === false) {
-                    addDoc(charactersCollectionRef, {Name: charName, Colour: curColour}).then(response => {
-                        console.log(response);
-                        setCharName("");
-                        setCurColour("#000000");
-                        updateColour();
-                        alert("Character created successfully!");
-                        const back_button = document.getElementById("back_to_home");
-                        back_button.click();
-                    }).catch(error => console.error(error))
-                }
-            }).catch(error => console.error(error));
+                    if (flag === false) {
+                        addDoc(charactersCollectionRef, {Name: charName, Colour: curColour}).then(response => {
+                            setCharName("");
+                            setCurColour("#000000");
+                            alert("Character created successfully!");
+                            const back_button = document.getElementById("back_to_home");
+                            back_button.click();
+                        }).catch(error => console.error(error))
+                    }
+                }).catch(error => console.error(error));
+            }
+        } else {
+            if(charName === "") {
+                alert("Character name cannot be empty!");
+            } else {
+                const charactersCollectionRef = collection(db, "Characters");
+                getDocs(charactersCollectionRef).then(response => {
+                    const chars_list = response.docs.map(doc => ({name: doc.data().Name}));
+                    var flag = false;
+                    for (var i = 0; i<chars_list.length; i++) {
+                        if (chars_list[i].name === charName) {
+                            alert("Character name taken, try a different one!");
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (flag === false) {
+                        const docRef = doc(db, "Characters", id.current);
+                        updateDoc(docRef, {Name: charName, Colour: curColour}).then(response => {
+                            alert("Updated the character!");
+                            const back_button = document.getElementById("back_to_home");
+                            back_button.click();
+                        }).catch(error => {console.log(error)})
+                    }
+                })
+            }
         }
     }
 
@@ -65,7 +115,7 @@ export default function Stickman({colour}) {
                 <input 
                     id='name_text_box'
                     type='text' 
-                    placeholder='Name your character'
+                    placeholder="Name your Character"
                     value={charName}
                     maxLength="20"
                     onChange={(e) => {setCharName(e.target.value)}}
@@ -76,7 +126,7 @@ export default function Stickman({colour}) {
                         id="color" 
                         type="color" 
                         value={curColour} 
-                        onChange={(e) => {setCurColour(e.target.value); updateColour(); console.log(curColour)}}
+                        onChange={(e) => {setCurColour(e.target.value)}}
                     />
                 </div>
                 <button type='submit' id="submit_button" onClick={(e) => {e.preventDefault(); submit_form();}}>Create this Character!</button>
