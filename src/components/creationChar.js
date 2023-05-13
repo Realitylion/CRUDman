@@ -8,6 +8,7 @@ export default function Stickman() {
     const [curColour, setCurColour] = useState("#000000");
     const { editChar, setEditChar, isHome, setisHome } = useContext(Context);
     var id = useRef("");
+    var incomingChar = useRef("");
 
     useEffect(() => {
         if (editChar !== "") {
@@ -20,6 +21,7 @@ export default function Stickman() {
                 var i = 0;
                 for (i; i < chars.length; i++) {
                     if (chars[i].id === editChar) {
+                        incomingChar.current = chars[i].data.Name;
                         setCharName(chars[i].data.Name);
                         setCurColour(chars[i].data.Colour);
                         break;
@@ -79,7 +81,7 @@ export default function Stickman() {
                     const chars_list = response.docs.map(doc => ({name: doc.data().Name}));
                     var flag = false;
                     for (var i = 0; i<chars_list.length; i++) {
-                        if (chars_list[i].name === charName) {
+                        if (chars_list[i].name === charName && incomingChar.current !== charName) {
                             alert("Character name taken, try a different one!");
                             flag = true;
                             break;

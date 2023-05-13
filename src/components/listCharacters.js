@@ -26,6 +26,10 @@ export default function ListCharacters() {
         setisHome(false);
     }
 
+    const deleteCharFunc = (deletingCharID) => {
+        // confirm("Are you sure?"?);
+    }
+
     return (
         <div id='char_list'>
             <button onClick={getCharacters} id='refresh_button'>Refresh Characters</button>
@@ -39,7 +43,7 @@ export default function ListCharacters() {
                             <label htmlFor={char.data.Name}><img src="edit_icon.png" height="30px" alt="edit_icon.png" /></label>
                         </td>
                         <td>
-                            <button className="button delete_button" id={char.id} hidden>Delete</button>
+                            <button className="button delete_button" id={char.id} hidden onClick={() => {deleteCharFunc(char.id)}}>Delete</button>
                             <label htmlFor={char.id}><img src="delete_icon.png" height="30px" alt="delete_icon.png" /></label>
                         </td>
                     </tr>
