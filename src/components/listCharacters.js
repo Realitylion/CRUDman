@@ -1,6 +1,6 @@
 import "../style/listCharacters.css"
 import React, { useEffect, useState, useContext } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { db } from  '../lib/init-firestore'
 import { Context } from "../context";
 
@@ -27,7 +27,18 @@ export default function ListCharacters() {
     }
 
     const deleteCharFunc = (deletingCharID) => {
-        // confirm("Are you sure?"?);
+        var userPreference = false;
+        if (window.confirm("This will delete this Character!") === true) {
+            userPreference = true;
+        }
+        if (userPreference) {
+            const docRef = doc(db, "Characters", deletingCharID);
+            deleteDoc(docRef).then(() => {
+                alert("Deleted the Character :(");
+                const refresh = document.getElementById('refresh_button');
+                refresh.click();
+            }).catch(error => {console.error(error)})
+        }
     }
 
     return (
