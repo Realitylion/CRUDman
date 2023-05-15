@@ -4,7 +4,7 @@ This is a simple CRUD (Create, Read, Update, Delete) application built with Reac
 
 ## Getting Started
 
-To get started with the application, simply click on the deployments button on the right-side of this repository's page and it will redirect you automatically to the web-app.
+To get started with the application, simply click on the link on the right-side of this repository's page below the 'About' section and it will redirect you automatically to the web-app.
 
 ## Features
 
