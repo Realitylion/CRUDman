@@ -29,4 +29,4 @@ To delete an existing item, click on the "Delete" button next to the item you wi
 ## Technologies Used
 * React.js
 * HTML/CSS
-* Firebase Realtime Database
+* Firebase Firestore Realtime Database
