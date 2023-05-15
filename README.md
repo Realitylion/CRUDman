@@ -12,19 +12,19 @@ This will start the application on http://localhost:3000/.
 
 ## Features
 
-Add new items
-View existing items
-Edit existing items
-Delete existing items
+Create a stickman with a name and colour of your choice
+Read a list of all stickmen that have been created
+Update any stickman that exists on the database
+Delete any stickman (please do not delete others' creations)
 
 ## Usage
-To add a new item, click on the "Add Item" button and enter the item details in the form. Click "Save" to add the item to the list.
+To create a new stickman, click on the "Create Character" button in the home screen and enter the name and colour of your choice. Click "Create this Character" to add the stickman to the list.
 
-To view existing items, simply scroll down the page. Each item will be displayed with its details.
+To view existing characters, simply scroll down the page. Each item will be displayed with its details.
 
-To edit an existing item, click on the "Edit" button next to the item you wish to update. Make the necessary changes in the form and click "Save" to update the item.
+To edit an existing item, click on the "Edit" icon next to the character you wish to update. Make the necessary changes in the form and click "Update Character" to update the character.
 
-To delete an existing item, click on the "Delete" button next to the item you wish to remove.
+To delete an existing character, click on the "Delete" icon next to the character you wish to remove.
 
 ## Technologies Used
 * React.js
