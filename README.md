@@ -4,11 +4,7 @@ This is a simple CRUD (Create, Read, Update, Delete) application built with Reac
 
 ## Getting Started
 
-To get started with the application, first clone the repository to your local machine, change to the `src` folder, and install the dependencies. Run the following command to start the application:
-
-### `npm start`
-
-This will start the application on http://localhost:3000/.
+To get started with the application, simply click on the deployments button on the right-side of this repository's page and it will redirect you automatically to the web-app.
 
 ## Features
 
