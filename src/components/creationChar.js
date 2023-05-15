@@ -6,7 +6,7 @@ import { Context } from "../context";
 
 export default function Stickman() {
     const [curColour, setCurColour] = useState("#000000");
-    const { editChar, setEditChar, isHome, setisHome } = useContext(Context);
+    const { editChar, setEditChar } = useContext(Context);
     var id = useRef("");
     var incomingChar = useRef("");
 
@@ -62,7 +62,7 @@ export default function Stickman() {
                         }
                     }
                     if (flag === false) {
-                        addDoc(charactersCollectionRef, {Name: charName, Colour: curColour}).then(response => {
+                        addDoc(charactersCollectionRef, {Name: charName, Colour: curColour}).then(() => {
                             setCharName("");
                             setCurColour("#000000");
                             alert("Character created successfully!");
@@ -89,7 +89,7 @@ export default function Stickman() {
                     }
                     if (flag === false) {
                         const docRef = doc(db, "Characters", id.current);
-                        updateDoc(docRef, {Name: charName, Colour: curColour}).then(response => {
+                        updateDoc(docRef, {Name: charName, Colour: curColour}).then(() => {
                             alert("Updated the character!");
                             const back_button = document.getElementById("back_to_home");
                             back_button.click();

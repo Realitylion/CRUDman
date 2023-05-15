@@ -6,7 +6,7 @@ import { Context } from "../context";
 
 export default function ListCharacters() {
     const [characters, setCharacters] = useState([]);
-    const { editChar, setEditChar, isHome, setisHome } = useContext(Context);
+    const { setEditChar, setisHome } = useContext(Context);
 
     useEffect(() => {
         getCharacters()
@@ -43,7 +43,6 @@ export default function ListCharacters() {
 
     return (
         <div id='char_list'>
-            <button onClick={getCharacters} id='refresh_button'>Refresh Characters</button>
             <h2>Available Characters:</h2>
             <table>
                 {characters.map(char => (

@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { Context } from "./context";
 
 function App() {
-  const { editChar, setEditChar, isHome, setisHome }= useContext(Context);
+  const { setEditChar, isHome, setisHome }= useContext(Context);
 
   if(isHome) {
     return (
