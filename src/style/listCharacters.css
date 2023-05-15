@@ -5,8 +5,8 @@ li {
 }
 
 table, td {
-    border: 1px solid rgb(167, 167, 167);
-    border-collapse: collapse;
+    /* border: 1px solid rgb(167, 167, 167); */
+    /* border-collapse: collapse; */
 }
 
 table {

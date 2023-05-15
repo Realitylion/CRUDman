@@ -12,8 +12,11 @@ function App() {
     return (
     <>
       <NavBar />  
-      <button id="create_char_button" onClick={() => {setisHome(false)}}>Create a New Character</button>
-      <ListCharacters />
+      <div
+      className='wrapper'>
+        <button id="create_char_button" onClick={() => {setisHome(false)}}>Create Character</button>
+        <ListCharacters />
+      </div>
     </>
     )
   } else {
@@ -21,9 +24,11 @@ function App() {
       <>
         <div id="creation_page">
           <NavBar /> 
-          {/* <h1>Welcome to Character Creation Page!</h1> */}
-          <Stickman />
-          <button id="back_to_home" onClick={() => {setisHome(true); setEditChar("")}}>Back to Characters</button>
+          <div
+          className='wrapper'>
+            <Stickman />
+            <button id="back_to_home" onClick={() => {setisHome(true); setEditChar("")}}>Back to Characters</button>
+          </div>
         </div>
       </>
     )

@@ -16,7 +16,7 @@ p {
   outline: none;
   font-family: Roboto, Arial, sans-serif;
   font-size: 16px;
-  color: #888888;
+  color: #F9F6EE;
 }
 
 h1 {
@@ -93,7 +93,7 @@ label.radio:after {
   height: 4px;
   top: 8px;
   left: 4px;
-  border: 3px solid #fff;
+  border: 3px solid #F9F6EE;
   border-top: none;
   border-right: none;
   transform: rotate(-45deg);
@@ -113,7 +113,7 @@ input[type=password] {
   border-radius: 5px;
   border: solid 1px #cbc9c9;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
-  background: #fff;
+  background: #F9F6EE;
 }
 
 input[type=password] {
@@ -125,7 +125,7 @@ input[type=password] {
   padding: 9.3px 15px;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
   background: #1c87c9;
-  color: #fff;
+  color: #F9F6EE;
   text-align: center;
 }
 
@@ -143,10 +143,20 @@ button {
   background: #1c87c9;
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: #F9F6EE;
 }
 
 button:hover {
   background: #26a9e0;
   cursor: pointer;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  height: 80%;
+}
+#creation_page{
+  height: 100%;
 }

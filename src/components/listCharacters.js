@@ -35,19 +35,25 @@ export default function ListCharacters() {
             const docRef = doc(db, "Characters", deletingCharID);
             deleteDoc(docRef).then(() => {
                 alert("Deleted the Character :(");
-                const refresh = document.getElementById('refresh_button');
-                refresh.click();
+                getCharacters();
             }).catch(error => {console.error(error)})
         }
     }
 
+    if (characters.length === 0) {
+        return (
+            <div id='char_list'>
+                <h2>No Characters Available!</h2>
+            </div>
+        )
+    }
     return (
         <div id='char_list'>
-            <h2>Available Characters:</h2>
+            <h1>Available Characters:</h1>
             <table>
                 {characters.map(char => (
                     <tr key={char.id}>
-                        <td className="col1"><h2 style={{color: char.data.Colour}}>{char.data.Name}</h2></td>
+                        <td className="col1"><h3 style={{color: char.data.Colour}}>{char.data.Name}</h3></td>
                         <td>
                             <button className="button edit_button" id={char.data.Name} hidden onClick={() => {editCharFunc(char.id)}}>Edit</button>
                             <label htmlFor={char.data.Name}><img src="edit_icon.png" height="30px" alt="edit_icon.png" /></label>
